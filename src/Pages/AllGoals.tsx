@@ -1,5 +1,5 @@
 import React from "react";
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
 
 const AllGoals: React.FC = () => {
@@ -9,6 +9,9 @@ const AllGoals: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar >
+                  <IonButtons slot="start">
+                        <IonMenuButton/>
+                    </IonButtons>  
                     <IonTitle>All Goals</IonTitle>
                 </IonToolbar>
             </IonHeader>
