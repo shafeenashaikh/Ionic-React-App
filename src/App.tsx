@@ -10,20 +10,16 @@ import {
   IonMenu, 
   IonMenuToggle, 
   IonRouterOutlet, 
-  IonTabBar,
-   IonTabButton, 
-   IonTabs, 
    IonTitle, 
    IonToolbar
   } from '@ionic/react';
 import { Route, Redirect} from 'react-router-dom';
 import { IonReactRouter} from '@ionic/react-router';
-import {list, options, trophyOutline} from 'ionicons/icons';
+import {list, options} from 'ionicons/icons';
 
-import Courses from './Pages/Courses';
-import CourseGoals from './Pages/CourseGoals';
-import AllGoals from './Pages/AllGoals';
+
 import Filter from './Pages/Filter';
+import CourseTabs from './Pages/CourseTabs';
 
 
 
@@ -48,6 +44,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import './theme/theme.css'
 
+
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
@@ -63,13 +60,13 @@ const App: React.FC = () => (
       <IonContent>
         <IonList>
         <IonMenuToggle>
-          <IonItem button routerLink="/all-goals">
+          <IonItem button routerLink="/courses/all-goals" routerDirection="none">
             <IonIcon  slot="start" icon={list} />
             <IonLabel>All Goals</IonLabel>
           </IonItem>
           </IonMenuToggle>
           <IonMenuToggle>
-          <IonItem button routerLink="/filter">
+          <IonItem button routerLink="/filter" routerDirection="none">
             <IonIcon  slot="start" icon={options} />
             <IonLabel>Filter</IonLabel>
           </IonItem>
@@ -77,34 +74,16 @@ const App: React.FC = () => (
         </IonList>
       </IonContent>
     </IonMenu>
-
-      <IonTabs>
       <IonRouterOutlet id="main">
         <Route path="/filter" exact>
           <Filter/>
         </Route>
-      <Route path="/Courses" exact>
-        <Courses />
-      </Route>
-      <Route path="/all-goals" exact>
-        <AllGoals />
-      </Route>
-      <Route path="/Courses/:courseId">
-        <CourseGoals />
-      </Route>
-      <Redirect to="/Courses"/>
+        <Route path="/courses" >
+          <CourseTabs/>
+        </Route>
+        <Redirect  to="/courses" />
       </IonRouterOutlet>
-      <IonTabBar slot="bottom">
-        <IonTabButton tab="all-goals" href="/all-goals">
-          <IonIcon icon={list}/>
-          <IonLabel>All Goals</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="courses" href="Courses">
-          <IonIcon icon={trophyOutline}/>
-          <IonLabel>Courses</IonLabel>
-        </IonTabButton>
-      </IonTabBar>
-      </IonTabs>
+     
     </IonReactRouter>
   </IonApp>
 );
