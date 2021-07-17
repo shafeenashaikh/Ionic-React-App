@@ -20,6 +20,7 @@ import {list, options} from 'ionicons/icons';
 
 import Filter from './Pages/Filter';
 import CourseTabs from './Pages/CourseTabs';
+import CoursesContextProvider from './data/CoursesContextProvider';
 
 
 
@@ -43,6 +44,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import './theme/theme.css'
+
 
 
 const App: React.FC = () => (
@@ -74,6 +76,7 @@ const App: React.FC = () => (
         </IonList>
       </IonContent>
     </IonMenu>
+    <CoursesContextProvider>
       <IonRouterOutlet id="main">
         <Route path="/filter" exact>
           <Filter/>
@@ -83,6 +86,7 @@ const App: React.FC = () => (
         </Route>
         <Redirect  to="/courses" />
       </IonRouterOutlet>
+      </CoursesContextProvider>
      
     </IonReactRouter>
   </IonApp>

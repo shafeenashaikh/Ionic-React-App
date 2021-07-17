@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { 
     IonHeader, 
     IonToolbar, 
@@ -9,14 +9,18 @@ import {
     IonBackButton,
 } from "@ionic/react";
 import { useParams} from 'react-router-dom';
-import { COURSE_DATA } from "./Courses";
+import CoursesContext from "../data/Courses-context";
+// import { COURSE_DATA } from "./Courses";
 
 const CourseGoals: React.FC = () => {
 const selectedCourseId = useParams<{courseId: string}>().courseId;
 
-const selectedCourse = COURSE_DATA.find(c => c.id === selectedCourseId);
+const CoursesCtx = useContext(CoursesContext);
+
+const selectedCourse = CoursesCtx.courses.find(c => c.id === selectedCourseId);
 
     return(
+        <React.Fragment>
        <IonPage>
         <IonHeader>
             <IonToolbar>
@@ -41,6 +45,7 @@ const selectedCourse = COURSE_DATA.find(c => c.id === selectedCourseId);
             )} */}
         </IonContent>
       </IonPage>
+      </React.Fragment>
     );
 };
 export default CourseGoals;

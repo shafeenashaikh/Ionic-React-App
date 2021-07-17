@@ -1,3 +1,5 @@
+
+import React from "react";
 import { 
     IonContent, 
     IonHeader, 
@@ -11,7 +13,7 @@ import {
     IonLabel,
     IonToggle
 } from "@ionic/react";
-import React from "react";
+
 import  { COURSE_DATA } from "./Courses";
 
 const Filter: React.FC = () => {
